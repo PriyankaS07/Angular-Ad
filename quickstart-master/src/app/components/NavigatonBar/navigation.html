@@ -1,0 +1,86 @@
+<nav class="navbar navbar-default" id="nav">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" >
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+            <a class="navbar-brand" href="#">Pick & Click</a>
+        </div>
+        <!-- Collection of nav links and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                
+            </ul>
+            
+            <div class="nav navbar-nav navbar-center">
+            <form class="navbar-form" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
+            </div>
+            
+            <ul class="nav navbar-nav navbar-right">
+            <li>
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle" class="dropdown"> <span class="glyphicon glyphicon-user"></span> My Account <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="#"data-toggle="modal" data-target="#myModal"><p style="padding-top:20px;font-size:15px;border-color:white">Login</p></a></li>
+        <li><a href="#"data-toggle="modal" data-target="#myModal1"><p style="padding-top:20px;font-size:15px">Register</p></a></li>
+        <!-- <li><a href="#"data-toggle="modal" data-target="#myModal3"><p style="padding-top:20px;font-size:15px">Edit Ad</p></a></li> -->
+        <!-- <li><a href="#"data-toggle="modal" data-target="#myModal4"><p style="padding-top:20px;font-size:15px">Delete Ad</p></a></li> -->
+        <li><a href="#"><p style="padding-top:20px;font-size:15px">Logout</p></a></li>
+        </ul>   
+    </li>
+    <li><a href="#"data-toggle="modal" data-target="#myModal2"><button type="button" class="btn btn-primary btn-md">Post Advertisement</button></a></li>
+    </ul>
+            </div>
+    </nav>
+
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title">Submit a free advertisement!</h3>
+        </div>
+        <div class="modal-body">
+          <form>
+    <div class="form-group">
+      Enter Title:
+      <input type="text" class="form-control" id="">
+    </div>
+    <div class="form-group">
+      Enter Name:
+      <input type="text" class="form-control" id="">
+    </div>
+    <div class="form-group">
+      Enter Category:
+      <input type="text" class="form-control" id="">
+    </div>
+    <div class="form-group">
+     Enter Description:
+      <input type="text" class="form-control" id="">
+    </div>
+    <!--<div class="form-group">
+        Upload Files:
+          <input type="file" name="Browse">
+    </div>-->
+  </form>
+  <div class="form-group">
+     <button type="button" class="btn btn-primary">Submit</button>
+    
+    </div>
+      </div>
+      
+    </div>
+  </div>
+  </div>
