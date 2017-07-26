@@ -1,86 +1,230 @@
 <nav class="navbar navbar-default" id="nav">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header" >
-            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            
-            <a class="navbar-brand" href="#">Pick & Click</a>
+
+    <a class="navbar-brand" href="#">Pick & Click</a>
+  </div>
+  <!-- Collection of nav links and other content for toggling -->
+  <div id="navbarCollapse" class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+
+    </ul>
+
+    <div class="col-md-3" style="margin-top:0.4cm">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
         </div>
-        <!-- Collection of nav links and other content for toggling -->
-        <div id="navbarCollapse" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                
-            </ul>
-            
-            <div class="nav navbar-nav navbar-center">
-            <form class="navbar-form" role="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-            <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-        </form>
-            </div>
-            
-            <ul class="nav navbar-nav navbar-right">
-            <li>
+      </div>
+
+
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
         <a href="#" data-toggle="dropdown" class="dropdown-toggle" class="dropdown"> <span class="glyphicon glyphicon-user"></span> My Account <b class="caret"></b></a>
         <ul class="dropdown-menu">
-            <li><a href="#"data-toggle="modal" data-target="#myModal"><p style="padding-top:20px;font-size:15px;border-color:white">Login</p></a></li>
-        <li><a href="#"data-toggle="modal" data-target="#myModal1"><p style="padding-top:20px;font-size:15px">Register</p></a></li>
-        <!-- <li><a href="#"data-toggle="modal" data-target="#myModal3"><p style="padding-top:20px;font-size:15px">Edit Ad</p></a></li> -->
-        <!-- <li><a href="#"data-toggle="modal" data-target="#myModal4"><p style="padding-top:20px;font-size:15px">Delete Ad</p></a></li> -->
-        <li><a href="#"><p style="padding-top:20px;font-size:15px">Logout</p></a></li>
-        </ul>   
-    </li>
-    <li><a href="#"data-toggle="modal" data-target="#myModal2"><button type="button" class="btn btn-primary btn-md">Post Advertisement</button></a></li>
+          <li>
+            <a href="#" data-toggle="modal" data-target="#myModal">
+              <p style="padding-top:20px;font-size:15px;border-color:white">Login</p>
+            </a>
+          </li>
+          <li>
+            <a href="#" data-toggle="modal" data-target="#myModal1">
+              <p style="padding-top:20px;font-size:15px">Register</p>
+            </a>
+          </li>
+          <!-- <li><a href="#"data-toggle="modal" data-target="#myModal3"><p style="padding-top:20px;font-size:15px">Edit Ad</p></a></li> -->
+          <!-- <li><a href="#"data-toggle="modal" data-target="#myModal4"><p style="padding-top:20px;font-size:15px">Delete Ad</p></a></li> -->
+          <li>
+            <a href="#">
+              <p style="padding-top:20px;font-size:15px">Logout</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#" data-toggle="modal" data-target="#myModal2"><button type="button" class="btn btn-primary btn-md">Post Advertisement</button></a></li>
     </ul>
-            </div>
-    </nav>
-
+  </div>
+</nav>
+<!-- Modal for Post Advertisement-->
 <div class="modal fade" id="myModal2" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title">Submit a free advertisement!</h3>
-        </div>
-        <div class="modal-body">
-          <form>
-    <div class="form-group">
-      Enter Title:
-      <input type="text" class="form-control" id="">
-    </div>
-    <div class="form-group">
-      Enter Name:
-      <input type="text" class="form-control" id="">
-    </div>
-    <div class="form-group">
-      Enter Category:
-      <input type="text" class="form-control" id="">
-    </div>
-    <div class="form-group">
-     Enter Description:
-      <input type="text" class="form-control" id="">
-    </div>
-    <!--<div class="form-group">
-        Upload Files:
-          <input type="file" name="Browse">
-    </div>-->
-  </form>
-  <div class="form-group">
-     <button type="button" class="btn btn-primary">Submit</button>
-    
-    </div>
+  <div class="modal-dialog">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-title">Submit a free advertisement!</h3>
       </div>
-      
+      <div class="modal-body">
+        <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm.value)" novalidate>
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" required minlength="3" class="form-control" #nameRef #nameModelRef="ngModel" ngModel>
+            <div *ngIf="nameModelRef.errors && nameModelRef.touched" class="alert alert-danger">
+              <div [hidden]="!nameModelRef.errors.required">Please enter your name </div>
+              <div [hidden]="!nameModelRef.errors.minlength"> Name length should be minimum 3 characters </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="title" required minlength="3" class="form-control" #titleRef #titleModelRef="ngModel" ngModel>
+            <div *ngIf="titleModelRef.errors && titleModelRef.touched" class="alert alert-danger">
+              <div [hidden]="!titleModelRef.errors.required">Please enter your name </div>
+              <div [hidden]="!titleModelRef.errors.minlength"> Name length should be minimum 3 characters </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Category</label>
+
+            <select name="category" class="form-control" #catRef #categoryModelRef="ngModel" ngModel>
+            <option *ngFor="let item of Category" [value]="item.name">{{item.name}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Description</label>
+            <input type="text" name="description" class="form-control" #descRef #descModelRef="ngModel" ngModel>
+          </div>
+
+          <button [disabled]="!productForm.form.valid" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+
     </div>
   </div>
+</div>
+
+
+
+
+
+<!-- Modal for Login-->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">
+          LOGIN
+        </h4>
+      </div>
+      <div class="modal-body">
+        <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value)" novalidate>
+          <div class="form-group">
+            <label for="usr">Username:</label>
+            <input type="text" name="userName" required minlength="3" class="form-control" #userNameRef #userNameModelRef="ngModel" ngModel>
+            <div *ngIf="userNameModelRef.errors && userNameModelRef.touched" class="alert alert-danger">
+              <div [hidden]="!userNameeModelRef.errors.required">Please enter your name </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" name="password" required minlength="3" class="form-control" #passwordRef #passwordModelRef="ngModel"
+              ngModel>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+          <div class="form-group">
+            <h3>
+              Sign in with</h3>
+
+            <div class="btn-group btn-group-justified">
+              <a href="#" class="btn btn-primary">Facebook</a>
+              <a href="#" class="btn btn-danger">Google</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal for Register-->
+<div class="modal fade" id="myModal1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">REGISTER </h4>
+      </div>
+
+      <div class="modal-body">
+        <form #registerForm="ngForm" (ngSubmit)="onregister(registerForm.value)" novalidate>
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="fname" required minlength="3" class="form-control" #fnameRef #fnameModelRef="ngModel" ngModel>
+            <div *ngIf="fnameModelRef.errors && fnameModelRef.touched" class="alert alert-danger">
+              <div [hidden]="!fnameModelRef.errors.required">Please enter your name </div>
+              <div [hidden]="!fnameModelRef.errors.minlength"> Name length should be minimum 3 characters </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="lname" required minlength="3" class="form-control" #lnameRef #lnameModelRef="ngModel" ngModel>
+            <div *ngIf="lnameModelRef.errors && lnameModelRef.touched" class="alert alert-danger">
+              <div [hidden]="!lnameModelRef.errors.required">Please enter your name </div>
+              <div [hidden]="!lnameModelRef.errors.minlength"> Name length should be minimum 3 characters </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="usr">Username:</label>
+            <input type="text" name="userName" required class="form-control" #userNameRef #userNameModelRef="ngModel" ngModel>
+            <div *ngIf="userNameModelRef.errors && userNameModelRef.touched" class="alert alert-danger">
+              <div [hidden]="!userNameeModelRef.errors.required">Please enter your name </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" name="password" required minlength="3" class="form-control" #passwordRef #passwordModelRef="ngModel"
+              ngModel>
+          </div>
+
+
+          <div class="form-group">
+            <label for="usr1">Enter Email-id:</label>
+            <input type="email" name="email" class="form-control" #regRef #regModelRef="ngModel" ngModel>
+          </div>
+
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="number" name="phone" required minlength="8" class="form-control" #phoneRef #phoneModelRef="ngModel" ngModel>
+            <div *ngIf="phoneModelRef.errors && phoneModelRef.touched" class="alert alert-danger">
+              <div [hidden]="!phoneModelRef.errors.required">Please enter your name </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+            <div class="form-group">
+              <h4>
+                Sign in with:</h4>
+
+              <div class="btn-group btn-group-justified">
+                <a href="#" class="btn btn-primary">Facebook</a>
+                <a href="#" class="btn btn-danger">Google</a>
+              </div>
+            </div>
+        </form>
+        </div>
+      </div>
+
+    </div>
   </div>
